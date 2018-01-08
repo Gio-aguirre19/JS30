@@ -1,0 +1,8 @@
+Data Attributes:
+Data-<name> can be used to connect two elements such as a span tag and an audio tag
+document.querySelect:
+Selects one
+document.querySelectAll:
+Selects many
+`audio[data-key="${e.keyCode}"]`:
+Use back-ticks and "${<event>}" as es6 templating syntax
