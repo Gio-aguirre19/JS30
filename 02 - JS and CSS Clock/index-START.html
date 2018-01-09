@@ -70,6 +70,11 @@
       border-bottom-left-radius: 100%;
     }
 
+    .hour-hand{
+      width: 30%;
+      left: 20%;
+    }
+
   </style>
 
   <script>
@@ -89,6 +94,10 @@
     minutesHand.style.transform = `rotate(${minutesDegrees}deg)`;
     hoursHand.style.transform = `rotate(${hoursDegrees}deg)`;
     console.log(`The time is ${hours}:${minutes}:${seconds}`);
+
+    if (seconds == 0) {
+      secondsHand.style.transition = 'none';
+    }
   }
 
   setInterval(setDate, 1000);
