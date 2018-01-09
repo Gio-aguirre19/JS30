@@ -1,0 +1,4 @@
+Transition-timing-function (CSS):
+Can be used to animate transitions
+Date():
+Function that gets date
