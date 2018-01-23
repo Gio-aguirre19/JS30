@@ -19,6 +19,11 @@ body {
 }
 
 .panel {
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   background:#6B0F9C;
   box-shadow:inset 0 0 0 5px rgba(255,255,255,0.1);
   color:white;
@@ -46,7 +51,16 @@ body {
   margin:0;
   width: 100%;
   transition:transform 0.5s;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.panel > *:first-child{ transform: translateY(-100%); }
+.panel.open-active > *:first-child{ transform: translateY(0); }
+.panel > *:last-child{ transform: translateY(100%); }
+.panel.open-active > *:last-child{ transform: translateY(0); }
 
 .panel p {
   text-transform: uppercase;
@@ -59,5 +73,6 @@ body {
 }
 
 .panel.open {
+  flex: 5;
   font-size:40px;
 }
