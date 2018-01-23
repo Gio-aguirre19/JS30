@@ -80,12 +80,23 @@
       const [bLast, bFirst] = nextPerson.split(', ');
       return aLast > bLast ? 1 : -1;
     });
-    console.table(alpha);
+    // console.table(alpha);
 
     // 8. Reduce Exercise
+    // Start with blank object and see if there is anything in it
+    // If empty init object with 0
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
 
+    const trans = data.reduce((obj, item) => {
+      if(!obj[item]){
+        obj[item] = 0
+      };
+      obj[item]++;
+      return obj;
+    }, {})
+
+    console.log(trans);
   </script>
 </body>
 </html>
