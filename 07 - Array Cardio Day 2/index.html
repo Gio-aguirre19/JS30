@@ -25,17 +25,39 @@
     ];
 
     // Some and Every Checks
+    // Some returns true if some people from the array are adults
     // Array.prototype.some() // is at least one person 19 or older?
+    const isAdult  = people.some(person => (new Date()).getFullYear() - person.year >= 19);
+
+    // console.log(isAdult);
+
+    // Every returns true if all people from the array are adults
     // Array.prototype.every() // is everyone 19 or older?
+    const allAdults  = people.every(person => (new Date()).getFullYear() - person.year >= 19);
+
+    // console.log(allAdults);
 
     // Array.prototype.find()
     // Find is like filter, but instead returns just the one you are looking for
     // find the comment with the ID of 823423
+    const commentID = comments.find(comment => comment.id === 823423)
+    // console.log(commentID);
 
     // Array.prototype.findIndex()
     // Find the comment with this ID
     // delete the comment with the ID of 823423
+    const index = comments.id(comment => comment.id === 823423);
 
+    // console.table(comments);
+
+    // Redux: Splice and make a new array and keep the old array
+    // Spread the array content into new array from the start to the index value, then coninue spreading from index + 1 to the end
+    const newComments = [
+      ...comments.splice[0, index]
+      ...comments.splice[index + 1];
+    ]
+
+    // console.table(newComments);
   </script>
 </body>
 </html>
