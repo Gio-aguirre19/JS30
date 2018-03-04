@@ -41,6 +41,14 @@ function takePhoto() {
   strip.insertBefore(link, strip.firstChild);
 }
 
+function keyPress(e){
+  e.preventDefault();
+  if (e.keyCode == 32){
+    takePhoto();
+  }
+}
+
 getVideo();
 
 video.addEventListener('canplay', paintCanvas);
+document.addEventListener('keypress', keyPress);
