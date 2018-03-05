@@ -25,7 +25,8 @@ function paintCanvas() {
   return setInterval(() => {
     ctx.drawImage(video, 0, 0, width, height)
     let pixels = ctx.getImageData(0, 0, width, height)
-    pixels = colorChange(pixels);
+    // pixels = colorChange(pixels);
+    pixels = rgbSplit(pixels);
     ctx.putImageData(pixels, 0, 0);
   }, 10);
 }
@@ -49,6 +50,15 @@ function colorChange(pixels){
     pixels.data[i + 0] += 100; // Red
     pixels.data[i + 1] -= 50; // Green
     pixels.data[i + 2] *= 0.5; // Blue
+  }
+  return pixels;
+}
+
+function rgbSplit(pixels){
+  for(let i = 0; i < pixels.data.length; i += 4){
+    pixels.data[i - 250] = pixels.data[i + 0]; // Red
+    pixels.data[i + 500] = pixels.data[i + 1]; // Green
+    pixels.data[i - 500] = pixels.data[i + 2]; // Blue
   }
   return pixels;
 }
