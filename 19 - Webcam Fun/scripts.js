@@ -3,6 +3,9 @@ const canvas = document.querySelector('.photo');
 const ctx = canvas.getContext('2d');
 const strip = document.querySelector('.strip');
 const snap = document.querySelector('.snap');
+const redFilterButton = document.querySelector('.redFilter');
+const rgbSplitButton = document.querySelector('.rgbSplit');
+const greenScreenButton = document.querySelector('.greenScreen');
 
 function getVideo(){
   navigator.mediaDevices.getUserMedia({ video: true, audio: false })
@@ -28,11 +31,10 @@ function paintCanvas() {
     /* Filters */
     // pixels = colorChange(pixels);
 
-    // pixels = rgbSplit(pixels);
-    // ctx.globalAlpha = 0.1;
+    pixels = rgbSplit(pixels);
+    ctx.globalAlpha = 0.1;
 
-
-    pixels = greenScreen(pixels);
+    // pixels = greenScreen(pixels);
     /* Filters end */
     ctx.putImageData(pixels, 0, 0);
   }, 10);
@@ -94,6 +96,9 @@ function greenScreen(pixels){
   }
   return pixels;
 }
+function test(e){
+  console.log(e);
+}
 
 function keyPress(e){
   e.preventDefault();
@@ -105,4 +110,7 @@ function keyPress(e){
 getVideo();
 
 video.addEventListener('canplay', paintCanvas);
+redFilterButton.addEventListener('click', false);
+rgbSplitButton.addEventListener('click', false);
+greenScreenButton.addEventListener('click', false);
 document.addEventListener('keypress', keyPress);
