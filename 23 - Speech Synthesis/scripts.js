@@ -18,10 +18,20 @@ function setVoice() {
   toggle();
 }
 
-function toggle() {
+function toggle(startOver = true) {
   speechSynthesis.cancel();
-  speechSynthesis.speak(msg);
+  if (startOver) {
+    speechSynthesis.speak(msg);
+  }
+}
+
+function setOption() {
+  // Check what is changing
+  console.log(this.name, this.value);
+  msg[this.name] = this.value;
+  toggle();
 }
 
 speechSynthesis.addEventListener('voiceschanged', populateVoices);
 voicesDropdown.addEventListener('change', setVoice);
+options.forEach(option => option.addEventListener('change', setOption));
