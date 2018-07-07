@@ -24,11 +24,14 @@ slider.addEventListener('mouseup', () => {
 });
 
 slider.addEventListener('mousemove', (e) => {
-  if(!isDown) return; // Stop from running this function is isDown is not true
+  if (!isDown) return; // Stop from running this function is isDown is not true
   // Stops from highlighting and/or moving defaults
   e.preventDefault();
   // Setting how much movement is being done
   const x = e.pageX - slider.offsetLeft;
   // Setting how much movement is done left or right
-  const movement = x - startX;
+  // Moving fast * 3
+  const movement = (x - startX) * 3;
+  // Smoothly moving slider.scrollLeft by subtracting scrollLeft by movement
+  slider.scrollLeft = scrollLeft - movement;
 });
