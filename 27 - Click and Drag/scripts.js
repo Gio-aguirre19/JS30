@@ -10,6 +10,7 @@ slider.addEventListener('mousedown', (e) => {
   // console.log(e.pageX);
   // Setting click startX to page X coords minus left margin of slider
   startX = e.pageX - slider.offsetLeft;
+  scrollLeft = slider.scrollLeft;
 });
 
 slider.addEventListener('mouseleave', () => {
@@ -22,7 +23,12 @@ slider.addEventListener('mouseup', () => {
   slider.classList.remove('active');
 });
 
-slider.addEventListener('mousemove', () => {
+slider.addEventListener('mousemove', (e) => {
   if(!isDown) return; // Stop from running this function is isDown is not true
-
+  // Stops from highlighting and/or moving defaults
+  e.preventDefault();
+  // Setting how much movement is being done
+  const x = e.pageX - slider.offsetLeft;
+  // Setting how much movement is done left or right
+  const movement = x - startX;
 });
