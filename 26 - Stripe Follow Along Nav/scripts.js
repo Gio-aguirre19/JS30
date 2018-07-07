@@ -14,8 +14,10 @@ function handleEnter() {
   const coords = {
     height: dropdownCoords.height,
     width: dropdownCoords.width,
-    top: dropdownCoords.top,
-    left: dropdownCoords.left,
+    // Offsets dropdown coords minus nav coords
+    // In case navigation gets moved in any way
+    top: dropdownCoords.top - navCoords.top,
+    left: dropdownCoords.left - navCoords.left,
   }
 
   // Rememeber to add px to the end of object value
