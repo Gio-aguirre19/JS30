@@ -14,11 +14,14 @@ function handleEnter() {
   const coords = {
     height: dropdownCoords.height,
     width: dropdownCoords.width,
+    top: dropdownCoords.top,
+    left: dropdownCoords.left,
   }
 
   // Rememeber to add px to the end of object value
   background.style.setProperty('height', `${coords.height}px`);
   background.style.setProperty('width', `${coords.width}px`);
+  background.style.setProperty('transform', `translate(${coords.left}px, ${coords.top}px)`);
 }
 
 function handleLeave() {
