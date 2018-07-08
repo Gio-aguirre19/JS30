@@ -1,8 +1,11 @@
 const speedBar = document.querySelector('.speed-bar');
 const fill = document.querySelector('.speed-fill');
 const video = document.querySelector('.flex');
+let isDown = false;
 
 function handleSpeed(e) {
+  if (!isDown) return;
+  e.preventDefault();
   // Getting position of just speedBar top
   const y = e.pageY - this.offsetTop;
   // Dividing position of speedBar top by the height of the speedbar
@@ -22,4 +25,8 @@ function handleSpeed(e) {
   video.playbackRate = playbackRate;
 }
 
+speedBar.addEventListener('mousedown', () => isDown = true);
+speedBar.addEventListener('mouseup', () => isDown = false);
+speedBar.addEventListener('mouseleave', () => isDown = false);
+speedBar.addEventListener('mousedown', handleSpeed);
 speedBar.addEventListener('mousemove', handleSpeed);
