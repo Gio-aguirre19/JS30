@@ -2,7 +2,7 @@ const speedBar = document.querySelector('.speed-bar');
 const fill = document.querySelector('.speed-fill');
 const video = document.querySelector('.flex');
 
-function videoSpeed(e) {
+function handleSpeed(e) {
   // Getting position of just speedBar top
   const y = e.pageY - this.offsetTop;
   // Dividing position of speedBar top by the height of the speedbar
@@ -22,4 +22,4 @@ function videoSpeed(e) {
   video.playbackRate = playbackRate;
 }
 
-speedBar.addEventListener('mousemove', videoSpeed);
+speedBar.addEventListener('mousemove', handleSpeed);
