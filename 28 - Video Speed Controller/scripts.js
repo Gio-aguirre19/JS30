@@ -10,8 +10,10 @@ function videoSpeed(e) {
   // Setting mix and max fill
   const min = 0.5;
   const max = 5;
+  // Making a percent for height of bar mouse move
   const height = Math.round(percent * 100) + '%';
-  console.log(height);
+  // console.log(height);
+  fill.style.height = height;
 }
 
 speedBar.addEventListener('mousemove', videoSpeed);
