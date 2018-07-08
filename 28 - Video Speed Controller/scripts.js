@@ -13,9 +13,13 @@ function videoSpeed(e) {
   // Making a percent for height of bar mouse move
   const height = Math.round(percent * 100) + '%';
   // console.log(height);
+  // Setting playback rate to be a minimum of minimum value
   const playbackRate = percent * (max - min) + min;
+  // Setting fill height and content
   fill.style.height = height;
   fill.textContent = playbackRate.toFixed(2) + 'x'
+  // Setting playback rate of video equal to playback rate value
+  video.playbackRate = playbackRate;
 }
 
 speedBar.addEventListener('mousemove', videoSpeed);
