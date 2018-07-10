@@ -1,8 +1,12 @@
 let countdown;
 const timerDisplay = document.querySelector('.display__time-left');
 const endTime = document.querySelector('.display__end-time');
+const buttons = document.querySelectorAll('[data-time]');
 
 function timer(secs) {
+  // Clears any existing timers
+  clearInterval(countdown);
+
   const now = Date.now();
   // now is in milliseconds
   const then = now + (secs * 1000);
@@ -34,3 +38,11 @@ function displayEndTime(timestamp) {
   const minute = end.getMinutes();
   endTime.textContent = `Be back by ${adjustHour}:${minute < 10 ?  '0' : ''}${minute}`;
 }
+
+function startTimer() {
+  // console.log(this.dataset.time);
+  const secs = parseInt(this.dataset.time);
+  timer(secs);
+}
+
+buttons.forEach(button => button.addEventListener('click', startTimer));
