@@ -25,8 +25,12 @@ function timer(secs) {
 
 function displayTimeLeft(secs) {
   const remainingSecs = secs % 60;
-  const minutes = Math.floor(secs / 60);
+  let minutes = Math.floor(secs / 60);
   const hours = Math.floor((secs / 60) / 60);
+
+  if (minutes > 60) {
+    minutes %= 60;
+  }
   const display = `H: ${hours}\n M: ${minutes < 10 ?  '0' : ''}${minutes}\n S: ${remainingSecs < 10 ?  '0' : ''}${remainingSecs}`;
   document.title = display;
   timerDisplay.textContent = display;
