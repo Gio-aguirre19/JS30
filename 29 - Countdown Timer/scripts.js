@@ -24,9 +24,10 @@ function timer(secs) {
 }
 
 function displayTimeLeft(secs) {
-  const minutes = Math.floor(secs / 60);
   const remainingSecs = secs % 60;
-  const display = `${minutes < 10 ?  '0' : ''}${minutes}:${remainingSecs < 10 ?  '0' : ''}${remainingSecs}`;
+  const minutes = Math.floor(secs / 60);
+  const hours = Math.floor((secs / 60) / 60);
+  const display = `H: ${hours}\n M: ${minutes < 10 ?  '0' : ''}${minutes}\n S: ${remainingSecs < 10 ?  '0' : ''}${remainingSecs}`;
   document.title = display;
   timerDisplay.textContent = display;
 }
@@ -34,7 +35,15 @@ function displayTimeLeft(secs) {
 function displayEndTime(timestamp) {
   const end = new Date(timestamp);
   const hour = end.getHours();
-  const adjustHour = hour > 12 ? hour - 12 : hour;
+  let adjustHour;
+  if (hour > 12) {
+    adjustHour = hour - 12;
+  } else if (hour == 0) {
+    adjustHour = 12;
+  } else {
+    adjustHour = hour;
+  }
+
   const minute = end.getMinutes();
   endTime.textContent = `Be back by ${adjustHour}:${minute < 10 ?  '0' : ''}${minute}`;
 }
