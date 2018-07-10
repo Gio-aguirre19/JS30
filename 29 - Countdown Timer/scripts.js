@@ -11,10 +11,12 @@ function timer(secs) {
       stopInterval(countdown);
       return;
     }
-    displayTimeLeft(secs);
+    displayTimeLeft(secsLeft);
   }, 1000)
 }
 
 function displayTimeLeft(secs) {
-  
+  const minutes = Math.floor(secs / 60);
+  const remainingSecs = secs % 60;
+  console.log({minutes, remainingSecs});
 }
