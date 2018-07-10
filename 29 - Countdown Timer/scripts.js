@@ -49,5 +49,9 @@ buttons.forEach(button => button.addEventListener('click', startTimer));
 document.customForm.addEventListener('submit', function(e){
   e.preventDefault();
   const mins = this.minutes.value;
+  if (isNaN(mins)) {
+    alert("Please type number");
+    return;
+  }
   timer(mins * 60);
 })
