@@ -1,6 +1,8 @@
 const holes = document.querySelectorAll('.hole');
 const scoreBoard = document.querySelector('.score');
 const moles = document.querySelector('.mole');
+// Set last hole used
+let lastHole;
 
 function ranTime(min, max) {
   // Plus min so max so min is min and max is max
@@ -8,5 +10,7 @@ function ranTime(min, max) {
 }
 
 function randomHole(holes){
-  console.log(holes.length);
+  const idx = Math.floor(Math.random() * holes.length);
+  const hole = holes[idx];
+  console.log(hole);
 }
