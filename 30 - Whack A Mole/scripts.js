@@ -42,3 +42,9 @@ function startGame() {
   peep();
   setTimeout(() => timeUp = true, 10000)
 }
+
+function bonk(e) {
+  if (!e.isTrusted) return; // Prevents simulated clicks
+}
+
+moles.forEach(mole => mole.addEventListener('click', bonk))
