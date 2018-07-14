@@ -5,6 +5,7 @@ const moles = document.querySelectorAll('.mole');
 let lastHoles = [];
 // Making flag for time limit
 let timeUp = false;
+let score = 0;
 
 function randomTime(min, max) {
   // Plus min so max so min is min and max is max
@@ -39,12 +40,16 @@ function peep() {
 function startGame() {
   scoreBoard.textContent = 0;
   timeUp = false;
+  score = 0;
   peep();
   setTimeout(() => timeUp = true, 10000)
 }
 
 function bonk(e) {
   if (!e.isTrusted) return; // Prevents simulated clicks
+  score++;
+  this.classList.remove('up');
+  scoreBoard.textContent = score;
 }
 
 moles.forEach(mole => mole.addEventListener('click', bonk))
