@@ -1,6 +1,6 @@
 const holes = document.querySelectorAll('.hole');
 const scoreBoard = document.querySelector('.score');
-const moles = document.querySelector('.mole');
+const moles = document.querySelectorAll('.mole');
 // Set last hole used
 let lastHoles = [];
 // Making flag for time limit
