@@ -3,6 +3,8 @@ const scoreBoard = document.querySelector('.score');
 const moles = document.querySelector('.mole');
 // Set last hole used
 let lastHoles = [];
+// Making flag for time limit
+let timeUp = false;
 
 function randomTime(min, max) {
   // Plus min so max so min is min and max is max
@@ -30,5 +32,6 @@ function peep() {
   hole.classList.add('up');
   setTimeout(() => {
     hole.classList.remove('up');
+    if (!timeUp) peep();
   }, time);
 }
