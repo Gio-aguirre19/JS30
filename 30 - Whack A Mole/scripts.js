@@ -4,7 +4,7 @@ const moles = document.querySelector('.mole');
 // Set last hole used
 let lastHoles = [];
 
-function ranTime(min, max) {
+function randomTime(min, max) {
   // Plus min so max so min is min and max is max
   return Math.round(Math.random() * (max - min) + min);
 }
@@ -22,4 +22,10 @@ function randomHole(holes){
   // Making lastHoles array
   lastHoles.length > 1 ? lastHoles.pop() && lastHoles.unshift(hole) : lastHoles.unshift(hole);
   return hole;
+}
+
+function peep() {
+  const time = randomTime(200, 1000);
+  const hole = randomHole(holes);
+  console.log(time, hole)
 }
