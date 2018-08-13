@@ -38,7 +38,11 @@ function displayMatches() {
     `
     // Joining map into a string
   }).join('');
-  suggestion.innerHTML = html;
+  if (searchInput.value == '') {
+    suggestion.innerHTML = '';
+  } else if (searchInput.value != '') {
+    suggestion.innerHTML = html;
+  }
 }
 
 function selectInput(e) {
