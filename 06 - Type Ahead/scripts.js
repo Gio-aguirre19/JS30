@@ -6,7 +6,9 @@ const suggestion = document.querySelector('.suggestions');
 const cities = [];
 
 fetch(endpoint)
+  // Converting fetched data to json 
   .then(blob => blob.json())
+  // Pushing data into cities array
   .then(data => cities.push(...data));
 
 function findMatches(wordMatch, cities) {
@@ -24,7 +26,9 @@ function displayMatches() {
   const matchArray = findMatches(this.value, cities);
   const html = matchArray.map(place => {
     const regex = new RegExp(this.value, 'gi');
+    // Adding highlights to input for city name
     const cityName = place.city.replace(regex, `<span class="hl">${this.value}</span>`);
+    // Adding highlights to input for state name
     const stateName = place.state.replace(regex, `<span class="hl">${this.value}</span>`);
     return `
       <li>
@@ -32,6 +36,7 @@ function displayMatches() {
         <span class="population">${numberWithCommas(place.population)}</span>
       </li>
     `
+    // Joining map into a string
   }).join('');
   suggestion.innerHTML = html;
 }
