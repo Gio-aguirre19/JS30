@@ -43,8 +43,8 @@ function displayMatches() {
 
 function selectInput(e) {
   if (searchInput.value != '') {
-    // searchInput.value = e.target.innerText;
-    console.log(e.target.innerText);
+    searchInput.value = this.querySelector('.name').innerText || e.target.innerText;
+    // console.log(this.querySelector(".name").innerText);
   }
 };
 
