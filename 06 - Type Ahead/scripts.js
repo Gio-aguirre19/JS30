@@ -42,8 +42,10 @@ function displayMatches() {
 }
 
 function selectInput(e) {
-  // searchInput.value = e.target.innerText;
-  console.log(e.target.innerText);
+  if (searchInput.value != '') {
+    // searchInput.value = e.target.innerText;
+    console.log(e.target.innerText);
+  }
 };
 
 
