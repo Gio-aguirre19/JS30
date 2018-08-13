@@ -1,4 +1,6 @@
 const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+const searchInput = document.querySelector('.search');
+const suggestion = document.querySelector('.suggestions');
 
 // Making an empty array to put items in
 const cities = [];
@@ -7,18 +9,18 @@ fetch(endpoint)
   .then(blob => blob.json())
   .then(data => cities.push(...data));
 
-function findMatches(wordMatch, cities){
+function findMatches(wordMatch, cities) {
   return cities.filter(place => {
     const regex = new RegExp(wordMatch, 'gi');
     return place.city.match(regex) || place.state.match(regex);
   })
 }
 
-function numberWithCommas(x){
+function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
-function displayMatches(){
+function displayMatches() {
   const matchArray = findMatches(this.value, cities);
   const html = matchArray.map(place => {
     const regex = new RegExp(this.value, 'gi');
@@ -34,8 +36,11 @@ function displayMatches(){
   suggestion.innerHTML = html;
 }
 
-const searchInput = document.querySelector('.search');
-const suggestion = document.querySelector('.suggestions');
+function selectInput(e) {
+  console.log(e.target.innerText);
+};
+
 
 searchInput.addEventListener('change', displayMatches);
 searchInput.addEventListener('keyup', displayMatches);
+suggestion.addEventListener('click', selectInput);
